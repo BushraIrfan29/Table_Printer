@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table Printer</title>
+</head>
+<style>
+    body {
+        background-color: rgb(93, 60, 124);
+        color: white;
+    }
+    
+</style>
+
+<body>
+    <label for="numberToPrint">Which table do you want to print?</label>
+    <input id="numberToPrint" type="number">
+    <label for="minLength">Number to start</label>
+    <input id="minLength" type="number">
+    <label for="maxLength">Number to end</label>
+    <input id="maxLength" type="number">
+    <button onclick="printTable()">Print Table</button>
+    <button onclick="refresh()">Refresh</button>
+
+    <p id="displayTable"></p>
+</body>
+<script>
+    function printTable() {
+        let table = document.getElementById("numberToPrint").value;
+        let minLength = document.getElementById("minLength").value;
+        let maxLength = document.getElementById("maxLength").value;
+        let displayTable = document.getElementById('displayTable');
+        displayTable.innerHTML = "";  // Clear the content before printing
+
+        if (table && minLength && maxLength) {
+            for (let i = minLength; i <= maxLength; i++) {
+                displayTable.innerHTML += `${table} x ${i} = ${table * i}<br>`;
+            }
+        } else {
+            displayTable.innerHTML = "Please enter all values!";
+        }
+    }
+
+    function refresh() {
+        document.getElementById("numberToPrint").value = "";
+        document.getElementById("minLength").value = "";
+        document.getElementById("maxLength").value = "";
+        document.getElementById('displayTable').innerHTML = "";
+    }
+</script>
+
+</html>
